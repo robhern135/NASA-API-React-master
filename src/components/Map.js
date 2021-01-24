@@ -6,7 +6,7 @@ import LocationMarkerVolcano from './LocationMarkerVolcano'
 import LocationMarkerIce from './LocationMarkerIce'
 import LocationInfoBox from './LocationInfoBox'
 
-const Map = ({ center, zoom, eventData }) => {
+const Map = ({ center, zoom, eventData, fireChecked, iceChecked, volcanoChecked }) => {
 
   const [locationInfo, setLocationInfo] = useState(null)
 
@@ -74,9 +74,10 @@ const Map = ({ center, zoom, eventData }) => {
           defaultZoom={ zoom }
           onClick={ () => console.log('clicked map')}
       >
-        { wildfireMarkers }
-        { volcanoMarkers }
-        { iceMarkers }
+
+        { fireChecked && wildfireMarkers }
+        { volcanoChecked && volcanoMarkers }
+        { iceChecked && iceMarkers }
       </GoogleMapReact>
       { locationInfo && <LocationInfoBox info={locationInfo} />}
     </div>

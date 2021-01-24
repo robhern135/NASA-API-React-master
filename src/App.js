@@ -10,6 +10,11 @@ function App() {
   const [ eventData, setEventData] = useState([])
   const [ loading, setLoading] = useState(false)
 
+
+  const [fireChecked, setFireChecked] = useState(true)
+  const [volcanoChecked, setVolcanoChecked] = useState(true)
+  const [iceChecked, setIceChecked] = useState(true)
+
   useEffect(() => {
     //setEffect has to return a function so create it...
     const fetchEvents = async () => {
@@ -22,9 +27,7 @@ function App() {
       const { events } = await res.json()
 
       setEventData(events)
-      setLoading(false)
-
-      console.log(events)
+      setLoading(false) 
 
     }
 
@@ -33,10 +36,20 @@ function App() {
 
   }, [])
 
+  const checkFire = () => {
+    setFireChecked(!fireChecked)
+  }
+  const checkIce = () => {
+    setIceChecked(!iceChecked)
+  }
+  const checkVolcano = () => {
+    setVolcanoChecked(!volcanoChecked)
+  }
+
   return (
     <div>
-      <Header title={"Natural Event Tracker (powered by NASA)"} />
-      { !loading ? <Map eventData={eventData} /> : <Loader />}
+      <Header title={"Natural Event Tracker (powered by NASA)"} checkFire={checkFire} checkIce={checkIce} checkVolcano={checkVolcano} />
+      { !loading ? <Map eventData={eventData}  fireChecked={fireChecked} iceChecked={iceChecked} volcanoChecked={volcanoChecked} /> : <Loader />}
     </div>
   );
 }
