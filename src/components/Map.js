@@ -69,7 +69,9 @@ const Map = ({ center, zoom, eventData, fireChecked, iceChecked, volcanoChecked 
   return (
     <div className="map">
       <GoogleMapReact
-          bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_MAPS_API_KEY }}
+      //would use this in production. but for illustrative purposes:
+          // bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_MAPS_API_KEY }}
+          bootstrapURLKeys={{ key: 'AIzaSyBj2k9p6wvZnaJ5vWKNlNRJIqk24xIQIZs'}}
           defaultCenter={ center }
           defaultZoom={ zoom }
           onClick={ () => console.log('clicked map')}
