@@ -1,7 +1,6 @@
-import React from 'react'
+import React from "react"
 
-import spinner from '../spinner.gif'
-
+import spinner from "../spinner.gif"
 
 export default function Loader() {
   return (
